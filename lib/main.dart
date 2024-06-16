@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Animation Example',
+      title: 'Flutter Animation',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -25,7 +25,7 @@ class AnimationWidget extends StatefulWidget {
 }
 
 class _AnimationWidgetState extends State<AnimationWidget> {
-  bool _isExpanded = false;
+  bool _shouldAnimate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +40,10 @@ class _AnimationWidgetState extends State<AnimationWidget> {
             AnimatedContainer(
               duration: const Duration(seconds: 1),
               curve: Curves.easeInOut,
-              width: _isExpanded ? 200 : 100,
-              height: _isExpanded ? 200 : 100,
-              color: _isExpanded ? Colors.blue : Colors.red,
-              transform: Matrix4.rotationZ(_isExpanded ? 0.5 : 0),
+              width: _shouldAnimate ? 200 : 100,
+              height: _shouldAnimate ? 200 : 100,
+              color: _shouldAnimate ? Colors.blue : Colors.red,
+              transform: Matrix4.rotationZ(_shouldAnimate ? 0.5 : 0),
               child: const Center(
                 child: Text(
                   'Tap Me',
@@ -55,7 +55,7 @@ class _AnimationWidgetState extends State<AnimationWidget> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  _isExpanded = !_isExpanded;
+                  _shouldAnimate = !_shouldAnimate;
                 });
               },
               child: const Text('Animate!'),
